@@ -18,19 +18,7 @@ const Element = function (props) {
     return <Component {...obj} />
 }
 
-const RouterMatch = function () {
-    return <>
-        {
-            routers.map((item, index) => {
-                let { path, children, name } = item
-                console.log(name);
-                return <Route path={path} element={<Element {...item} key={index} />}>
-                    {Array.isArray(children) ? RouterMatch(children) : null}
-                </Route>
-            })
-        }
-    </>
-}
+
 //创建路由容器
 export const RouterContent = function () {
     return <Suspense fallback={
@@ -39,16 +27,17 @@ export const RouterContent = function () {
         </Mask>
     }>
         <Routes>
-            {
-                RouterMatch()
-            }
+            {routers.map(item => {
+                let { name, path } = item;
+                return <Route key={name}
+                    path={path}
+                    element={
+                        <Element {...item} />
+                    } />;
+            })}
         </Routes>
-
-    </Suspense>
-}
-
-
-
+    </Suspense>;
+};
 //创建WithRouter
 export const WithRouter = function (Component) {
     return function HOC(props) {

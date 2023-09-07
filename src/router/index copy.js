@@ -2,7 +2,6 @@ import QueryString from "qs"
 import { Suspense } from "react"
 import { Routes, useLocation, useNavigate, useParams, Route } from "react-router-dom"
 import routers from "./routers"
-import { Mask, DotLoading } from 'antd-mobile'
 //这边可以进行路由验证的的判断和一些其他的操作
 const Element = function (props) {
     //传入各种方法
@@ -33,11 +32,7 @@ const RouterMatch = function () {
 }
 //创建路由容器
 export const RouterContent = function () {
-    return <Suspense fallback={
-        <Mask visible={true}>
-            <DotLoading color="white" />
-        </Mask>
-    }>
+    return <Suspense fallback={<> 正在处理,请稍好</>}>
         <Routes>
             {
                 RouterMatch()
