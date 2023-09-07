@@ -6,7 +6,7 @@ import reducer from "./reducer";
 const middleWare = [reducerPromise, reduxThunk]
 
 const env = process.env.NODE_ENV || 'development'
-if (env == 'development') {
+if (env === 'development') {
     middleWare.push(reduxLogger)
 }
 const store = createStore(reducer, applyMiddleware(...middleWare))

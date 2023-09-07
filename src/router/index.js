@@ -24,7 +24,7 @@ const RouterMatch = function () {
             routers.map((item, index) => {
                 let { path, children, name } = item
                 console.log(name);
-                return <Route path={path} element={<Element {...item} key={index} />}>
+                return <Route path={path} element={<Element {...item} />} key={index}>
                     {Array.isArray(children) ? RouterMatch(children) : null}
                 </Route>
             })

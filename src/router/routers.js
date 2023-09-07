@@ -1,7 +1,12 @@
 import { lazy } from "react"
+import { Navigate } from "react-router-dom"
 
 
 const routers = [{
+    path: '/',
+    name: 'Redirect',
+    component: () => <Navigate to='/home' />
+}, {
     path: '/home',
     name: 'Home',
     component: lazy(() => { return import('../views/Home') }),
@@ -23,13 +28,6 @@ const routers = [{
         title: '登录页'
     }
 }, {
-    path: '/notfound',
-    name: 'NotFound',
-    component: lazy(() => { return import('../views/Page404') }),
-    meta: {
-        title: '404页'
-    }
-}, {
     path: '/person',
     name: 'Person',
     component: lazy(() => { return import('../views/Person') }),
@@ -44,6 +42,13 @@ const routers = [{
         title: '收藏页'
     }
 }, {
+    path: '/notfound',
+    name: 'Page404',
+    component: lazy(() => { return import('../views/Page404') }),
+    meta: {
+        title: '收藏页'
+    }
+}, {
     path: '/update',
     name: 'Update',
     component: lazy(() => { return import('../views/Update') }),
@@ -53,9 +58,6 @@ const routers = [{
 }, {
     path: '*',
     name: '404',
-    component: lazy(() => import('../views/Page404')),
-    meta: {
-        title: '404页面-知乎日报'
-    }
+    component: () => <Navigate to='/notfound' />
 }]
 export default routers

@@ -1,4 +1,5 @@
 import _ from '../../assets/utils'
+// import * as TYPES from '../action/action_type';
 const InitState = {
 
 }
