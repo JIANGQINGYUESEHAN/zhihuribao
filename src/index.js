@@ -8,6 +8,8 @@ import { ConfigProvider } from 'antd-mobile'
 import zhCN from "antd-mobile/es/locales/zh-CN";
 import './index.less'
 import 'normalize.css'
+import { Provider } from 'react-redux';
+import store from './store';
 
 //自动调节
 (function () {
@@ -27,8 +29,12 @@ import 'normalize.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <ConfigProvider locale={zhCN}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
+
   </ConfigProvider>
 
 );
