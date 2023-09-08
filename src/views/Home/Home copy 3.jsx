@@ -15,12 +15,9 @@ export default function Home() {
   });
   const [StoreInfo, SetStore] = useState([]);
   const [TopStores, SetTopStore] = useState([]);
-  console.log();
-  const [Scroll, SetScroll] = useState(() => {
-    return (
-      window.scrollY + window.innerHeight + 10 >= document.body.offsetHeight
-    );
-  });
+  console.log(
+    window.scrollY + window.innerHeight + 10 >= document.body.offsetHeight
+  );
   //在开头发送请求
   /* 第一次渲染完毕:向服务器发送数据请求 */
   useEffect(() => {
@@ -28,6 +25,7 @@ export default function Home() {
       try {
         let { date, stories, top_stories } = await api.queryNewsLatest();
         setToday(date);
+        SetStore(stories);
         SetStore(stories);
         SetTopStore(top_stories);
       } catch (_) {}
@@ -62,20 +60,24 @@ export default function Home() {
           })}
         </Swiper>
       </div>
+      {/* 未加载出信息时 */}
+      {/* <SkeletonAgain /> */}
+      {/* <Divider contentPosition="left">左侧内容</Divider>
+      <NewsItem /> */}
       {StoreInfo.length == 0 ? (
         <SkeletonAgain />
       ) : (
         <>
           {StoreInfo.map((item, index) => {
             return (
-              <div key={index}>
-                {index == 0 ? (
+              <>
+                {/* {index == 0 ? (
                   <Divider contentPosition="left">
                     {utils.formatTime(today, "{1}月{2}日")}
                   </Divider>
-                ) : null}
-                <NewsItem key={index} item={item} />
-              </div>
+                ) : null} */}
+                {/* <NewsItem key={index} /> */}
+              </>
             );
           })}
         </>
