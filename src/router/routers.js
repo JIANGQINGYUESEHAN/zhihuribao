@@ -9,12 +9,12 @@ const routers = [{
 }, {
     path: '/home',
     name: 'Home',
-    component: lazy(() => { return import('../views/Home') }),
+    component: lazy(() => { return import('../views/Home/Home') }),
     meta: {
         title: '首页'
     }
 }, {
-    path: '/detail',
+    path: '/detail/:id',
     name: 'Detail',
     component: lazy(() => { return import('../views/Detail') }),
     meta: {

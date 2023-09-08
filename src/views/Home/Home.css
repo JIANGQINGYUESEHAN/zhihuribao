@@ -1,0 +1,48 @@
+.swiper_box {
+  width: 100%;
+  height: 300px;
+  background-color: aquamarine;
+}
+.swiper_box > .adm-swiper {
+  height: 100%;
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div > .info {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  left: 0px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div > .info .content {
+  flex: 3;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div > .info .content .h3 {
+  font-size: 20px;
+  color: #eeee;
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div > .info .author {
+  flex: 2;
+  width: 100%;
+  padding-left: 40px;
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div > .info .author .p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.swiper_box > .adm-swiper > .adm-swiper-track > .adm-swiper-track-inner > .adm-swiper-slide > .adm-swiper-item > .herf > .item_div > .img {
+  height: 100%;
+  width: 100%;
+}
