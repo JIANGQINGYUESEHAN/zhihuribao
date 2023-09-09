@@ -17,7 +17,8 @@ export default function Home() {
   const [TopStores, SetTopStore] = useState([]);
 
   const div = useRef(null);
-
+  console.log(div.current);
+  useEffect(() => {});
   //在开头发送请求
   /* 第一次渲染完毕:向服务器发送数据请求 */
   useEffect(() => {
@@ -31,26 +32,6 @@ export default function Home() {
       } catch (_) {}
     })();
   }, []);
-
-  //当看见正在加载选项说明已经到底了
-  useEffect(() => {
-    const ob = new IntersectionObserver(async (changes) => {
-      let { isIntersecting } = changes[0];
-      if (isIntersecting) {
-        let res = await api.queryNewsBefore(today);
-        StoreInfo.push(res);
-        SetStore([...StoreInfo]);
-        //
-      }
-    });
-    let divRef = div.current;
-    ob.observe(div.current);
-    //   //在组件销毁的时候
-    return () => {
-      ob.unobserve(divRef); //loadMore.current=null
-      // ob = null;
-    };
-  });
 
   return (
     <div>
@@ -80,7 +61,7 @@ export default function Home() {
           })}
         </Swiper>
       </div>
-      {/* 信息行 */}
+      信息行
       {StoreInfo.length == 0 ? (
         <SkeletonAgain />
       ) : (
@@ -88,29 +69,24 @@ export default function Home() {
           {StoreInfo.map((item, index) => {
             let { date, stories } = item;
             return (
-              <div className="news-box" key={index}>
+              <div className="news-box" key={date}>
                 {index !== 0 ? (
                   <Divider contentPosition="left">
                     {utils.formatTime(date, "{1}月{2}日")}
                   </Divider>
                 ) : null}
-
-                {stories.map((cur) => {
-                  return <NewsItem key={cur.id} item={cur} />;
-                })}
+                <div className="list">
+                  {stories.map((cur) => {
+                    return <NewsItem key={cur.id} info={cur} />;
+                  })}
+                </div>
               </div>
             );
           })}
         </>
       )}
       {/* 最底层的正在加载 */}
-      <div
-        className="loading"
-        ref={div}
-        style={{
-          display: StoreInfo.length === 0 ? "none" : "block",
-        }}
-      >
+      <div className="loading" ref={div}>
         <DotLoading />
       </div>
     </div>
