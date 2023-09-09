@@ -16,7 +16,7 @@ const routers = [{
 }, {
     path: '/detail/:id',
     name: 'Detail',
-    component: lazy(() => { return import('../views/Detail') }),
+    component: lazy(() => { return import('../views/Detail/Detail') }),
     meta: {
         title: '详情页'
     }
@@ -28,6 +28,7 @@ const routers = [{
         title: '登录页'
     }
 }, {
+
     path: '/person',
     name: 'Person',
     component: lazy(() => { return import('../views/Person') }),
