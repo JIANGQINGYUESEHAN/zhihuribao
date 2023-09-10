@@ -1,3 +1,20 @@
+.detail .content {
+  overflow-x: hidden;
+  margin: 0;
+  padding-bottom: 90px;
+}
+.detail .content .img-place-holder {
+  overflow: hidden;
+}
+.detail .content .img-place-holder img {
+  margin: 0;
+  width: 100%;
+}
+.detail .content .meta .avatar {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .detail .detail_icon {
   width: 100%;
   overflow: hidden;
@@ -15,8 +32,24 @@
   align-items: center;
   font-size: 20px;
 }
+.detail .detail_icon .left .antd-mobile-icon:active {
+  color: #19adf5;
+}
 .detail .detail_icon .right {
-  background-color: aqua;
   height: 100%;
   flex: 9;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.detail .detail_icon .right .left_span {
+  display: inline-block;
+}
+.detail .detail_icon .right .left_span .adm-badge-wrapper .adm-badge-fixed {
+  right: 1px;
+  top: 3px;
+}
+.detail .detail_icon .right .left_span .antd-mobile-icon:active {
+  color: #19adf5;
 }

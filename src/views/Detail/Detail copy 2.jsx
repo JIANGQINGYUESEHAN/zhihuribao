@@ -9,7 +9,6 @@ import {
   MailOutline,
 } from "antd-mobile-icons";
 import { Badge, Space } from "antd-mobile";
-import { flushSync } from "react-dom";
 export default function Detail(props) {
   const { params, navigate } = props;
   /* 定义状态 */
@@ -35,13 +34,10 @@ export default function Detail(props) {
     (async () => {
       try {
         const result = await api.queryNewsInfo(params.id);
-        flushSync(() => {
-          setInfo(result);
-
-          //处理结构
-          HandleImage(result);
-        });
+        setInfo(result);
         //处理样式
+        //处理结构
+        HandleImage(result);
         HandleCss(result);
       } catch (e) {}
     })();
