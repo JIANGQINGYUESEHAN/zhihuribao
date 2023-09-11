@@ -3,12 +3,23 @@
   margin: 0;
   padding-bottom: 90px;
 }
+.detail .content figure .content-image {
+  width: 100%;
+  height: 120px;
+}
+.detail .content p {
+  margin: 0 auto;
+}
 .detail .content .img-place-holder {
   overflow: hidden;
 }
 .detail .content .img-place-holder img {
   margin: 0;
   width: 100%;
+}
+.detail .content .question-title {
+  text-align: center;
+  margin-top: 10px;
 }
 .detail .content .meta .avatar {
   display: inline-block;

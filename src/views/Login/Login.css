@@ -1,0 +1,26 @@
+.login .adm-form .adm-form-footer .bottom_button {
+  display: block;
+  margin: 20px auto;
+  width: 60%;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.login .adm-form .adm-list .adm-list-body {
+  margin-top: 10px;
+  border: none;
+}
+.login .adm-form .adm-list .adm-list-body .adm-list-body-inner {
+  border: none;
+}
+.login .adm-form .adm-list .adm-list-body .adm-list-body-inner .navbar-again-box {
+  border: none;
+  height: 40px;
+}
+.login .adm-form .adm-list .adm-list-body .adm-list-body-inner .navbar-again-box .adm-nav-bar-left .adm-nav-bar-back .adm-nav-bar-back-arrow {
+  font-size: 16px;
+}
+.login .adm-form .adm-list .adm-list-body .adm-list-body-inner .navbar-again-box .adm-nav-bar-title {
+  border: none;
+  font-size: 16px;
+}

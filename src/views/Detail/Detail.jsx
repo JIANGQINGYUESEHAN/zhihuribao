@@ -10,6 +10,7 @@ import {
 } from "antd-mobile-icons";
 import { Badge, Space } from "antd-mobile";
 import { flushSync } from "react-dom";
+import SkeletonAgain from "../../component/SkeletonAgain/SkeletonAgain";
 export default function Detail(props) {
   const { params, navigate } = props;
   /* 定义状态 */
@@ -29,7 +30,20 @@ export default function Detail(props) {
     link.href = css[0];
     document.head.appendChild(link);
   }
-  function HandleImage(result) {}
+  function HandleImage(result) {
+    let imgPlaceHolder = document.querySelector(".img-place-holder");
+    if (!imgPlaceHolder) return;
+    // 创建大图
+    let tempImg = new Image();
+    tempImg.src = result.image;
+    tempImg.onload = () => {
+      imgPlaceHolder.appendChild(tempImg);
+    };
+    tempImg.onerror = () => {
+      let parent = imgPlaceHolder.parentNode;
+      parent.parentNode.removeChild(parent);
+    };
+  }
   useEffect(() => {
     //发送请求(结构样式)
     (async () => {
@@ -56,48 +70,54 @@ export default function Detail(props) {
     })();
   }, []);
   return (
-    <div className="detail">
-      <div
-        className="content"
-        dangerouslySetInnerHTML={{ __html: info ? info.body : null }}
-      ></div>
-      <div className="detail_icon">
-        <div className="left">
-          <span>
-            <LeftOutline
-              onClick={() => {
-                navigate(-1);
-              }}
-            />
-          </span>
+    <>
+      {setInfo == null ? (
+        <SkeletonAgain />
+      ) : (
+        <div className="detail">
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{ __html: info ? info.body : null }}
+          ></div>
+          <div className="detail_icon">
+            <div className="left">
+              <span>
+                <LeftOutline
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                />
+              </span>
+            </div>
+            <div className="right">
+              <span className="left_span">
+                <Badge
+                  content={extra ? extra.comments : null}
+                  bordered
+                  color="#19adf5"
+                >
+                  <MailOutline />
+                </Badge>
+              </span>
+              <span className="left_span">
+                <Badge
+                  content={extra ? extra.popularity : null}
+                  bordered
+                  color="#19adf5"
+                >
+                  <LikeOutline />
+                </Badge>
+              </span>
+              <span className="left_span">
+                <StarOutline />
+              </span>
+              <span className="left_span">
+                <SendOutline />
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="right">
-          <span className="left_span">
-            <Badge
-              content={extra ? extra.comments : null}
-              bordered
-              color="#19adf5"
-            >
-              <MailOutline />
-            </Badge>
-          </span>
-          <span className="left_span">
-            <Badge
-              content={extra ? extra.popularity : null}
-              bordered
-              color="#19adf5"
-            >
-              <LikeOutline />
-            </Badge>
-          </span>
-          <span className="left_span">
-            <StarOutline />
-          </span>
-          <span className="left_span">
-            <SendOutline />
-          </span>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

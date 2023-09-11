@@ -4,19 +4,16 @@ const InitState = {
     info: null
 }
 const BaseReducer = function (state = InitState, action) {
-    //浅克隆
-    state = _.clone(state)
+    state = _.clone(state);
     switch (action.type) {
+        // 更新登录者信息
         case TYPES.BASE_INFO:
-            state.info = action.info
-            // console.log(State);
+
+            state.info = action.info;
             break;
-
         default:
-
     }
-
-    return state
-}
+    return state;
+};
 
 export default BaseReducer

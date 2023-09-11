@@ -23,7 +23,7 @@ const routers = [{
 }, {
     path: '/login',
     name: 'Login',
-    component: lazy(() => { return import('../views/Login') }),
+    component: lazy(() => { return import('../views/Login/Login') }),
     meta: {
         title: '登录页'
     }

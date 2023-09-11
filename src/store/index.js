@@ -9,5 +9,9 @@ const env = process.env.NODE_ENV || 'development'
 if (env === 'development') {
     middleWare.push(reduxLogger)
 }
-const store = createStore(reducer, applyMiddleware(...middleWare))
+// 创建store容器
+const store = createStore(
+    reducer,
+    applyMiddleware(...middleWare)
+);
 export default store
