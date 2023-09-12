@@ -8,6 +8,7 @@ import api from "../../api/index";
 import { connect } from "react-redux";
 import action from "../../store/action";
 function Login(props) {
+  const { info } = props;
   const [form] = Form.useForm();
   const [btnText, setBtnText] = useState("发送验证码");
   //是否可点击
@@ -35,18 +36,19 @@ function Login(props) {
 
       //判断token是否存在
       //不存在
-      if (utils.storage.get("tk") == null) {
+      if (utils.storage.get("tk") == null && info == null) {
         //进行登录获取token
         let { code: codeHttp, token } = await api.login(phone, code);
+
         if (codeHttp !== 0) {
           Toast.show({
-            content: "登录失败",
+            content: "登录失败1",
           });
           form.resetFields(["code"]);
 
           //登录成功 对token 进行存储 存储结束后发送请求
-          utils.storage.set("tk", token);
         }
+        utils.storage.set("tk", token);
       }
       //存在 直接发请求
 
@@ -62,7 +64,7 @@ function Login(props) {
       to ? props.navigate(to, { replace: true }) : props.navigate(-1);
     } catch (error) {
       Toast.show({
-        content: "登录失败",
+        content: "登录失败2",
       });
     }
   }
@@ -115,7 +117,7 @@ function Login(props) {
       <Form
         initialValues={{
           phone: "13167732982",
-          code: "342755",
+          code: "",
         }}
         layout="horizontal"
         form={form}
@@ -159,4 +161,4 @@ function Login(props) {
   );
 }
 
-export default connect(null, action.Base)(Login);
+export default connect((state) => state.base, action.Base)(Login);

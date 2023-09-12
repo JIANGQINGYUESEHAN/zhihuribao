@@ -205,6 +205,7 @@ const clone = function clone(...params) {
 /* 设定具备有效期的localStorage存储方案 */
 const storage = {
     set(key, value) {
+        console.log(value);
         localStorage.setItem(key, JSON.stringify({
             time: +new Date(),
             value

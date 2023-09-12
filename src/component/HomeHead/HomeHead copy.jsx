@@ -4,41 +4,18 @@ import img from "../../assets/images/timg.jpg";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import action from "../../store/action";
-import store from "../../store";
-import { Toast } from "antd-mobile";
-import { useNavigate } from "react-router-dom";
 function HomeHead(props) {
   console.log(props);
   const { today, info, queryUserInfoAsync } = props;
-  const navigate = useNavigate();
-  //点击头像
-  async function clickAvatar() {
-    //判断是否获得了info ，获得了info就说明已经登录 ，info没有就重新派发一下，然后还没有 就 直接跳转到 登录页记录要去的路由地址，登录后直接跳转
-    if (!info) {
-      let ActionInfo = await queryUserInfoAsync();
-      let { info: Info } = ActionInfo;
-      store.dispatch(ActionInfo);
-      //继续判段
-      if (!Info) {
-        Toast.show({
-          icon: "fail",
-          content: "请先登录",
-        });
-        //跳转到登录路由
-        navigate({
-          pathname: "/login",
-          search: `?to=${"/update"}`,
-        });
-      }
-    }
-    navigate("/update");
-  }
-
   //判断info是否存在
   useEffect(() => {
-    if (!info) {
-      queryUserInfoAsync();
-    }
+    (async () => {
+      if (!info) {
+        //info重新派发获取参数如果派发不成功 就说明得重新登录
+        let ActionInfo = await queryUserInfoAsync();
+        //从中获取info
+      }
+    })();
   });
 
   //计算 today
@@ -79,8 +56,8 @@ function HomeHead(props) {
         <span className="middle_span">早安，世界</span>
       </div>
       <div className="right">
-        <div className="img_div" onClick={clickAvatar}>
-          <img src={info ? info.pic : img} alt="" className="img" />
+        <div className="img_div">
+          <img src={img} alt="" className="img" />
         </div>
       </div>
     </div>

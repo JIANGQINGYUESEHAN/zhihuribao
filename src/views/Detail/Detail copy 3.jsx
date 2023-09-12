@@ -15,8 +15,8 @@ import { flushSync } from "react-dom";
 import SkeletonAgain from "../../component/SkeletonAgain/SkeletonAgain";
 import { connect } from "react-redux";
 function Detail(props) {
-  const { params, navigate, info: userInfo, queryUserInfoAsync } = props;
-
+  const { params, navigate } = props;
+  console.log(props);
   /* 定义状态 */
   let [info, setInfo] = useState(null),
     [extra, setExtra] = useState(null);
@@ -74,14 +74,10 @@ function Detail(props) {
     })();
   }, []);
 
-  async function store() {
+  function store() {
     //点击判段受否登录，没有没有登录，进行登录获取信息然后重新跳转
     //然后在获取到store里面的信息 在外面进行是否收藏的比较收藏了就渲染成实心，点击时会出现 已经收藏的字样，然后没有收藏进行收藏进行样式的同步
     //判读是否登录
-    if (!userInfo) {
-      //没有登录 重新派发
-      const ActionInfo = await queryUserInfoAsync();
-    }
   }
   return (
     <>

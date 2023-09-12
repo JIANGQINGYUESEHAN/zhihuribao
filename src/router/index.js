@@ -29,12 +29,12 @@ const Element = function (props) {
 
     useEffect(() => {
         if (IsShow) {
-            console.log(path);
-            if (/.*\/login.*/.test(path)) {
-                navigate({
-                    pathname: '/home'
-                })
-            }
+            // console.log(path);
+            // if (/.*\/login.*/.test(path)) {
+            //     navigate({
+            //         pathname: '/home'
+            //     })
+            // }
             return;
         }
         (async function () {
