@@ -31,14 +31,14 @@ const routers = [{
 
     path: '/person',
     name: 'Person',
-    component: lazy(() => { return import('../views/Person') }),
+    component: lazy(() => { return import('../views/Person/Person.jsx') }),
     meta: {
         title: '个人信息页'
     }
 }, {
     path: '/store',
     name: 'Store',
-    component: lazy(() => { return import('../views/Store') }),
+    component: lazy(() => { return import('../views/Store/Store') }),
     meta: {
         title: '收藏页'
     }

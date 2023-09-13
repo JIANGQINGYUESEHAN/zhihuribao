@@ -32,7 +32,7 @@ function HomeHead(props) {
       }
       store.dispatch(ActionInfo);
     }
-    navigate("/update");
+    navigate("/person");
   }
 
   //判断info是否存在

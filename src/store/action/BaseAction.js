@@ -7,7 +7,7 @@ const BaseAction = {
         try {
             let { code, data } = await api.queryUserInfo();
             if (+code === 0) {
-                console.log(data);
+
                 info = data;
             }
         } catch (_) { }

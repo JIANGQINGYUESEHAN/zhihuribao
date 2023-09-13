@@ -1,0 +1,49 @@
+.person {
+  font-size: 16px;
+  .content {
+    .content_person {
+      width: 100%;
+      height: 120px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .person_img {
+        margin: 0 auto;
+        background-color: antiquewhite;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 10px;
+        .img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+    .select {
+      width: 100%;
+      height: auto;
+      .select_link {
+        display: block;
+        width: 100%;
+        height: 40px;
+
+        line-height: 40px;
+        padding-left: 20px;
+        color: black;
+        font-size: 14px;
+        margin-top: 10px;
+        font-weight: 400;
+        position: relative;
+
+        .icon {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 40px;
+        }
+      }
+    }
+  }
+}
