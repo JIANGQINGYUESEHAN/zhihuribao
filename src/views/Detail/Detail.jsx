@@ -19,7 +19,7 @@ function Detail(props) {
   const {
     params,
     navigate,
-    info: userInfo,
+    base,
     queryUserInfoAsync,
     queryStoreListAsync,
     removeStoreListById,
@@ -29,7 +29,7 @@ function Detail(props) {
   let { storeList } = Store;
 
   /* 定义状态 */
-  let [UserInfo, setUserInfo] = useState(userInfo);
+
   let [info, setInfo] = useState(null),
     [extra, setExtra] = useState(null);
   let link;
@@ -88,14 +88,17 @@ function Detail(props) {
   //在刚到这里的时候就该获取信息
   useEffect(() => {
     (async () => {
-      if (!userInfo) {
+      if (!base.info) {
         let { info } = await queryUserInfoAsync();
-        setUserInfo(info);
+        if (!info) {
+          //重新派发
+          store.dispatch(await queryUserInfoAsync());
+        }
       }
-      if (UserInfo && !storeList) {
+
+      if (!(base.info && !storeList)) {
         await queryStoreListAsync();
       }
-      // await queryStoreListAsync();
     })();
   }, []);
 
@@ -111,7 +114,7 @@ function Detail(props) {
     //点击判段受否登录，没有没有登录，进行登录获取信息然后重新跳转
     //然后在获取到store里面的信息 在外面进行是否收藏的比较收藏了就渲染成实心，点击时会出现 已经收藏的字样，然后没有收藏进行收藏进行样式的同步
     //判读是否登录
-    if (!userInfo) {
+    if (!base.info) {
       //没有登录 重新派发
       const ActionInfo = await queryUserInfoAsync();
       //结构出 info
@@ -154,7 +157,7 @@ function Detail(props) {
 
       //reducer 的收藏类删除该收藏
       await removeStoreListById(single.id);
-      console.log(11111);
+
       Toast.show({
         content: "取消收藏成功",
         icon: "success",

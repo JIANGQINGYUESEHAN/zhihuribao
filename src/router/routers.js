@@ -1,6 +1,6 @@
 import { lazy } from "react"
 import { Navigate } from "react-router-dom"
-
+import { withKeepAlive } from 'keepalive-react-component';
 
 const routers = [{
     path: '/',
@@ -9,7 +9,7 @@ const routers = [{
 }, {
     path: '/home',
     name: 'Home',
-    component: lazy(() => { return import('../views/Home/Home') }),
+    component: withKeepAlive(lazy(() => { return import('../views/Home/Home') }), { cacheId: 'UserList', scroll: true }),
     meta: {
         title: '首页'
     }
