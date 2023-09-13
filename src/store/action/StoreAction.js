@@ -6,7 +6,9 @@ const StoreAction = {
         let list = null;
         try {
             let { code, data } = await api.storeList();
+            //console.log(await api.storeList());
             if (+code === 0) {
+
                 list = data;
             }
         } catch (_) { }

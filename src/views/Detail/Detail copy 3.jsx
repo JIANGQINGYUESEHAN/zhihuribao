@@ -15,7 +15,7 @@ import { flushSync } from "react-dom";
 import SkeletonAgain from "../../component/SkeletonAgain/SkeletonAgain";
 import { connect } from "react-redux";
 function Detail(props) {
-  const { params, navigate } = props;
+  const { params, navigate, queryStoreListAsync } = props;
   console.log(props);
   /* 定义状态 */
   let [info, setInfo] = useState(null),

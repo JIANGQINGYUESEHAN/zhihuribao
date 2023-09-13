@@ -1,18 +1,26 @@
 import _ from '../../assets/utils'
-//import * as TYPES from '../action/action_type';
+import * as TYPES from '../action/action_type';
 const InitState = {
-
+    storeList: []
 }
 const StoreReducer = function (state = InitState, action) {
+    //console.log(action);
     //浅克隆
-    const State = _.clone(state)
-    switch (action) {
+    state = _.clone(state)
+    switch (action.type) {
+        case TYPES.STORE_LIST:
+            state.storeList = action.list
 
-
+            break;
+        case TYPES.STORE_REMOVE:
+            state.storeList = state.storeList.filter(item => {
+                return item.id !== action.id
+            })
+            break;
         default:
             break;
     }
-    return State
+    return state
 }
 
 export default StoreReducer

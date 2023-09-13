@@ -17,7 +17,7 @@ function HomeHead(props) {
     if (!info) {
       let ActionInfo = await queryUserInfoAsync();
       let { info: Info } = ActionInfo;
-      store.dispatch(ActionInfo);
+
       //继续判段
       if (!Info) {
         Toast.show({
@@ -30,6 +30,7 @@ function HomeHead(props) {
           search: `?to=${"/update"}`,
         });
       }
+      store.dispatch(ActionInfo);
     }
     navigate("/update");
   }
