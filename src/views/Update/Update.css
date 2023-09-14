@@ -1,0 +1,36 @@
+.update .avatar {
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  padding-left: 30px;
+  line-height: 60px;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+}
+.update .avatar .avatar_span {
+  display: inline-block;
+  margin-right: 30px;
+}
+.update .name {
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  padding-left: 30px;
+  line-height: 60px;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+}
+.update .name .input_div {
+  margin-left: 30px;
+}
+.update .name .input_div .input {
+  height: 30px;
+  border: none;
+  outline: none;
+}
+.update .div_btn {
+  display: flex;
+  justify-content: center;
+}

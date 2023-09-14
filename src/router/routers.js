@@ -52,7 +52,7 @@ const routers = [{
 }, {
     path: '/update',
     name: 'Update',
-    component: lazy(() => { return import('../views/Update') }),
+    component: lazy(() => { return import('../views/Update/Update') }),
     meta: {
         title: '更新页'
     }
